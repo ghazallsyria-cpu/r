@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Courtyard-inspired palette */
+    --background: 34 33% 96%;          /* #F8F5F0 Papyrus White */
+    --foreground: 30 5% 15%;           /* #2D2A26 Ink Black */
+
+    --card: 0 0% 100%;                 /* Pure White */
+    --card-foreground: 30 5% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 5% 15%;
+
+    --primary: 163 100% 24%;           /* #007B5F Courtyard Green */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 34 33% 96%;
+    --secondary-foreground: 30 5% 15%;
+
+    --muted: 30 10% 93%;
+    --muted-foreground: 30 6% 56%;     /* #A8A199 Dry Clay */
+
+    --accent: 34 20% 92%;
+    --accent-foreground: 30 5% 15%;
+
+    --destructive: 0 56% 52%;          /* #C94444 Terracotta Red */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 12% 88%;
+    --input: 30 12% 88%;
+    --ring: 163 100% 24%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 30 5% 15%;
+    --sidebar-primary: 163 100% 24%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 34 20% 95%;
+    --sidebar-accent-foreground: 30 5% 15%;
+    --sidebar-border: 30 12% 90%;
+    --sidebar-ring: 163 100% 24%;
+
+    /* Custom tokens */
+    --success: 152 60% 40%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 30 5% 15%;
+    --info: 210 70% 50%;
+    --info-foreground: 0 0% 100%;
+
+    --font-heading: 'Cairo', sans-serif;
+    --font-body: 'IBM Plex Sans Arabic', sans-serif;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .stat-card {
+    @apply bg-card rounded-lg border p-5 transition-shadow hover:shadow-md;
+  }
+
+  .data-table {
+    @apply w-full text-sm;
+  }
+
+  .data-table th {
+    @apply sticky top-0 z-10 bg-card px-4 py-3 text-right font-semibold text-muted-foreground border-b;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .data-table td {
+    @apply px-4 py-3 border-b;
+  }
+
+  .data-table tbody tr {
+    @apply transition-colors hover:bg-accent/50 cursor-pointer;
+  }
+
+  .section-title {
+    @apply sticky top-0 z-10 bg-background py-3 font-bold text-lg;
+    font-family: var(--font-heading);
+  }
+
+  .focus-panel {
+    @apply fixed inset-y-0 right-0 z-40 w-full sm:w-[80%] md:w-[60%] lg:w-[45%] bg-card shadow-2xl border-l transform transition-transform duration-300;
+  }
+
+  .focus-panel-overlay {
+    @apply fixed inset-0 z-30 bg-foreground/20 backdrop-blur-sm transition-opacity;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-colors;
+    font-family: var(--font-heading);
+  }
+
+  .nav-item-active {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .nav-item-inactive {
+    @apply text-muted-foreground hover:bg-accent hover:text-foreground;
+  }
+
+  .badge-success {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    background-color: hsl(var(--success) / 0.1);
+    color: hsl(var(--success));
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    background-color: hsl(var(--warning) / 0.1);
+    color: hsl(var(--warning));
+  }
+
+  .badge-destructive {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    background-color: hsl(var(--destructive) / 0.1);
+    color: hsl(var(--destructive));
+  }
+
+  .badge-info {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    background-color: hsl(var(--info) / 0.1);
+    color: hsl(var(--info));
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* ── LaTeX / KaTeX rendering ─────────────────── */
+.latex-content .katex-display {
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+.latex-content .katex {
+  font-size: 1.05em;
+}
+.latex-content h2 { margin-top: 1.2rem; margin-bottom: 0.5rem; }
+.latex-content h3 { margin-top: 0.8rem; margin-bottom: 0.3rem; }
+.latex-content li { list-style: disc; margin-right: 1.5rem; margin-bottom: 0.2rem; }
+.latex-content p { margin-bottom: 0.4rem; }
+
+/* ── Utility badge classes ──────────────────── */
