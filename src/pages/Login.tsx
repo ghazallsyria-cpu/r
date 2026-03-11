@@ -99,11 +99,25 @@ export default function Login() {
             </button>
           </form>
 
-          <div className="mt-6 pt-4 border-t">
-            <p className="text-xs text-muted-foreground text-center">
-              للدخول كمدير: الرقم المدني <span className="font-heading font-medium" dir="ltr">1000000001</span> وكلمة المرور <span className="font-heading font-medium" dir="ltr">admin123</span>
-            </p>
-          </div>
+<div className="mt-10 border-t pt-6">
+  <div className="flex flex-col items-center gap-2 text-center">
+
+    <div className="h-[2px] w-24 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full"></div>
+
+    <p className="text-sm text-muted-foreground">
+      جميع الحقوق محفوظة © 2026
+    </p>
+
+    <p className="text-sm font-semibold tracking-wide bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+      برمجة وتنفيذ : إيهاب جمال غزال
+    </p>
+
+    <p className="text-xs text-muted-foreground font-mono tracking-widest">
+      EHAB GHAZAL
+    </p>
+
+  </div>
+</div>
         </div>
       </div>
     </div>
